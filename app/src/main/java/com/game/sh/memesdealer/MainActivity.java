@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         // и без заголовка
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        TabHost tabHost = (TabHost) findViewById(android.R.id.tabhost);
+        TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         // инициализация
         tabHost.setup();
 
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         tabHost.addTab(tabSpec);
 
         tabSpec = tabHost.newTabSpec("tag2");
-        tabSpec.setIndicator("Создать мем");
+        tabSpec.setIndicator("Информация");
         tabSpec.setContent(R.id.tab2);
         tabHost.addTab(tabSpec);
 
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        creater = (ImageButton) findViewById(R.id.BCreator);
+        creater = (ImageButton)findViewById(R.id.BCreator);
         creater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

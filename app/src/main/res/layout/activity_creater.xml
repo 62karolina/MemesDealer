@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_creater"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.game.sh.memesdealer.Creater">
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:weightSum="1">
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="match_parent"
+        android:layout_height="459dp"
+        android:contentDescription=""
+        android:background="?attr/colorButtonNormal"
+        android:scaleType="fitStart"/>
+
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content">
+
+        <ImageButton
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            tools:id="@+id/downloading"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:onClick="showPopup"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/subMenu" />
+    </RelativeLayout>
+
+</LinearLayout>
+
