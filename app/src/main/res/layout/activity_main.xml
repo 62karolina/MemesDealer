@@ -16,12 +16,12 @@
         android:id="@android:id/tabhost"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/BCreator">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="485dp"
             android:orientation="vertical"
             android:weightSum="1">
 
@@ -29,19 +29,21 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.12">
+                android:layout_weight="0.83">
 
                 <LinearLayout
                     android:id="@+id/tab1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    tools:ignore="ExtraText">
 
                     <TextView
-                        android:id="@+id/tvTab2"
+                        android:id="@+id/tvTab1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        />
+                        android:text="@string/txt_tab1"/>
+                    />
                 </LinearLayout>
 
                 <LinearLayout
@@ -49,8 +51,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <TextView
-                        android:id="@+id/tvTab1"
+                        android:id="@+id/tvTab2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/txt_tab2"/>
@@ -62,17 +65,22 @@
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-10dp">
+                android:layout_marginBottom="-100dp"
+                android:gravity="bottom|center_vertical|fill_horizontal">
 
             </TabWidget>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:srcCompat="@mipmap/ic_launcher"
-                android:id="@+id/BCreator"
-                android:alpha="1"
-                android:layout_marginBottom="-10dp" />
         </LinearLayout>
     </TabHost>
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/BCreator"
+        android:alpha="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        tools:ignore="ContentDescription" />
 </RelativeLayout>
