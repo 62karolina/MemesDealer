@@ -26,11 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // если хотим, чтобы приложение постоянно имело портретную ориентацию
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        // если хотим, чтобы приложение было полноэкранным
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        // и без заголовка
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
         // инициализация
