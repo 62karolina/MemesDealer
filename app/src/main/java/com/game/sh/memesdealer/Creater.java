@@ -1,7 +1,11 @@
 package com.game.sh.memesdealer;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +19,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class Creater extends AppCompatActivity {
 
     ImageButton popMenu;
     TextView textView;
     ImageButton downloading;
+    ImageView imageView;
+    Uri selectedImageUri;
+    private String  selectedImagePath;
     static final int GALLERY_REQUEST = 1;
 
     @Override
@@ -33,18 +45,23 @@ public class Creater extends AppCompatActivity {
         popMenu = (ImageButton)findViewById(R.id.subMenu);
         textView = (TextView) findViewById(R.id.textView);
         textView.setVisibility(View.INVISIBLE);
+        imageView = (ImageView)findViewById(R.id.icon);
 
         popMenu.setOnClickListener(viewClickListener);
 
-        downloading = (ImageButton)findViewById(R.id.downloading);   //Загрузка фото из галереи
-        downloading.setOnClickListener(new View.OnClickListener() {
+        imageView = (ImageView)findViewById(R.id.icon);
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent photoPinkerIntent = new Intent(Intent.ACTION_PICK);
-                photoPinkerIntent.setType("image/*");
-                startActivityForResult(photoPinkerIntent, GALLERY_REQUEST);
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                intent.addCategory(Intent.CATEGORY_OPENABLE);
+                startActivityForResult(intent, GALLERY_REQUEST);
             }
         });
+
+
 
     }
 
@@ -53,25 +70,32 @@ public class Creater extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         Bitmap bitmap = null;
-        ImageView imageView = (ImageView)findViewById(R.id.icon);
-        switch (requestCode){
+
+
+        switch(requestCode) {
             case GALLERY_REQUEST:
-                if(requestCode == RESULT_OK){
-
+                if(resultCode == RESULT_OK){
                     Uri selectedImage = data.getData();
-                    try{
+                    try {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-
-                    }catch (IOException e){
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                     imageView.setImageBitmap(bitmap);
                 }
         }
+
     }
 
 
-
+    public String getPath(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
+    }
 
     View.OnClickListener viewClickListener = new View.OnClickListener() {
         @Override

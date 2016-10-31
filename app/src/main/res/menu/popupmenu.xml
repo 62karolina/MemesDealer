@@ -6,7 +6,7 @@
         <item
             android:id="@+id/menu1"
 
-            android:title="Popup menu item 1"/>
+            android:title="Ввод текста"/>
         <item
             android:id="@+id/menu2"
             android:title="Popup menu item 2"/>
